@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.SplashActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinetop_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinestart_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/margin_guidelines" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineend_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/margin_guidelines" />
+
+    <ImageView
+        android:id="@+id/imageview_signup_logo"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_imageview_large"
+        android:layout_marginTop="@dimen/margin_minimum"
+        android:contentDescription="@string/all_application_name"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineend_signup"
+        app:layout_constraintStart_toStartOf="@+id/guidelinestart_signup"
+        app:layout_constraintTop_toTopOf="@+id/guidelinetop_signup"
+        app:srcCompat="@drawable/signup_profile" />
+
+    <EditText
+        android:id="@+id/edittext_signup_fullname"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_edittext_regular"
+        android:layout_marginTop="@dimen/marginvertical_view_extended"
+        android:background="@drawable/style_edittext_normal"
+        android:ems="10"
+        android:hint="@string/signup_enterfullname"
+        android:inputType="textCapWords"
+        android:paddingStart="@dimen/padding_regular"
+        android:paddingEnd="@dimen/padding_regular"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dgray"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineend_signup"
+        app:layout_constraintStart_toStartOf="@+id/guidelinestart_signup"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_signup_logo" />
+
+    <EditText
+        android:id="@+id/edittext_signup_email"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_edittext_regular"
+        android:layout_marginTop="@dimen/marginvertical_view_regular"
+        android:background="@drawable/style_edittext_normal"
+        android:ems="10"
+        android:hint="@string/all_enteremail"
+        android:inputType="textEmailAddress"
+        android:paddingStart="@dimen/padding_regular"
+        android:paddingEnd="@dimen/padding_regular"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dgray"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineend_signup"
+        app:layout_constraintStart_toStartOf="@+id/guidelinestart_signup"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_fullname" />
+
+    <EditText
+        android:id="@+id/edittext_signup_password"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_edittext_regular"
+        android:layout_marginTop="@dimen/marginvertical_view_regular"
+        android:background="@drawable/style_edittext_normal"
+        android:ems="10"
+        android:hint="@string/signup_enterpassword"
+        android:inputType="textPassword"
+        android:paddingStart="@dimen/padding_regular"
+        android:paddingEnd="@dimen/padding_regular"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dgray"
+        app:layout_constraintEnd_toStartOf="@id/guidelineend_signup"
+        app:layout_constraintStart_toStartOf="@id/guidelinestart_signup"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_email" />
+
+    <Button
+        android:id="@+id/button_signup"
+        style="@style/Button"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_button_regular"
+        android:layout_marginTop="@dimen/marginvertical_view_regular"
+        android:text="@string/all_signup"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineend_signup"
+        app:layout_constraintStart_toStartOf="@+id/guidelinestart_signup"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_signup_password" />
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_divider"
+        android:layout_marginEnd="@dimen/margin_minimum"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/textview_signup_divider"
+        app:layout_constraintEnd_toStartOf="@+id/textview_signup_divider"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/guidelinestart_signup"
+        app:layout_constraintTop_toTopOf="@+id/textview_signup_divider" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/height_divider"
+        android:layout_marginStart="@dimen/margin_minimum"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@+id/textview_signup_divider"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineend_signup"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textview_signup_divider"
+        app:layout_constraintTop_toTopOf="@+id/textview_signup_divider" />
+
+    <TextView
+        android:id="@+id/textview_signup_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/marginvertical_view_extended"
+        android:text="@string/all_divider_text"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_regular_large"
+        app:layout_constraintEnd_toStartOf="@+id/divider2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/divider1"
+        app:layout_constraintTop_toBottomOf="@+id/button_signup" />
+
+    <TextView
+        android:id="@+id/textview_signuptologin"
+        style="@style/TextStyle.SubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginvertical_view_extended"
+        android:text="@string/signup_loginemail"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineend_signup"
+        app:layout_constraintStart_toEndOf="@+id/guidelinestart_signup"
+        app:layout_constraintTop_toBottomOf="@+id/textview_signup_divider" />
+
+    <ImageView
+        android:id="@+id/imageView_signup_clearfullname"
+        android:layout_width="@dimen/size_imageview_small"
+        android:layout_height="@dimen/size_imageview_small"
+        android:layout_marginEnd="@dimen/margin_regular"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_signup_fullname"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_signup_fullname"
+        app:layout_constraintTop_toTopOf="@+id/edittext_signup_fullname"
+        app:srcCompat="@drawable/all_cancel" />
+
+    <ImageView
+        android:id="@+id/imageView_signup_clearemail"
+        android:layout_width="@dimen/size_imageview_small"
+        android:layout_height="@dimen/size_imageview_small"
+        android:layout_marginEnd="@dimen/margin_regular"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_signup_email"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_signup_email"
+        app:layout_constraintTop_toTopOf="@+id/edittext_signup_email"
+        app:srcCompat="@drawable/all_cancel" />
+
+    <ImageView
+        android:id="@+id/imageView_signup_clearpassword"
+        android:layout_width="@dimen/size_imageview_small"
+        android:layout_height="@dimen/size_imageview_small"
+        android:layout_marginEnd="@dimen/margin_regular"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_signup_password"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_signup_password"
+        app:layout_constraintTop_toTopOf="@+id/edittext_signup_password"
+        app:srcCompat="@drawable/all_cancel" />
+</androidx.constraintlayout.widget.ConstraintLayout>

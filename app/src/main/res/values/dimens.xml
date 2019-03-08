@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Text Sizes-->
+    <dimen name="text_regular_size">16sp</dimen>
+    <dimen name="text_regular_large">20sp</dimen>
+    <dimen name="text_regular_vlarge">24sp</dimen>
+
+    <!--View Height-->
+    <dimen name="height_edittext_regular">42dp</dimen>
+    <dimen name="height_button_regular">42dp</dimen>
+    <dimen name="height_divider">0.5dp</dimen>
+
+    <!--Icon Size-->
+    <dimen name="size_imageview_small">16dp</dimen>
+    <dimen name="size_imageview_regular">58dp</dimen>
+    <dimen name="size_imageview_large">80dp</dimen>
+
+    <!--View Margins-->
+    <dimen name="margin_guidelines">30dp</dimen>
+    <dimen name="margin_minimum">8dp</dimen>
+    <dimen name="margin_regular">16dp</dimen>
+    <dimen name="marginvertical_view_regular">16dp</dimen>
+    <dimen name="marginvertical_view_large">24dp</dimen>
+    <dimen name="marginvertical_view_extended">42dp</dimen>
+
+    <!--View Padding-->
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_regular">16dp</dimen>
+</resources>

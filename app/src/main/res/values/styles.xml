@@ -1,0 +1,50 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppThemeFullScreen" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:statusBarColor">@color/lgray</item>
+    </style>
+
+    <style name="TextStyle">
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextStyle.Header">
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_regular_vlarge</item>
+    </style>
+
+    <style name="TextStyle.SubHeader">
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_regular_large</item>
+    </style>
+
+    <style name="Button" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/style_button_primary</item>
+    </style>
+
+</resources>

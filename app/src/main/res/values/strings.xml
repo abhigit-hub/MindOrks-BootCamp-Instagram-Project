@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Instagram</string>
+    <string name="all_application_name">Application Name</string>
+    <string name="all_login">login</string>
+    <string name="all_signup">Sign up</string>
+    <string name="all_divider_text">OR</string>
+    <string name="login_signupemail">Sign Up with Email</string>
+    <string name="signup_loginemail">Login with Email</string>
+    <string name="all_enteremail">Enter your email id</string>
+    <string name="login_enterpassword">Enter your password</string>
+    <string name="signup_enterpassword">Choose your password</string>
+    <string name="signup_enterfullname">Choose your full name</string>
+    <string name="all_validation_success">Validation Successful</string>
+    <string name="all_empty_string" />
+    <string name="all_invalid_email">Please enter valid email</string>
+    <string name="all_invalid_password">Minimum password length is 6 characters</string>
+    <string name="all_invalid_name">Please enter a valid name</string>
+</resources>
