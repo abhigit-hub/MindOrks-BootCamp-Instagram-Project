@@ -3,6 +3,8 @@ package com.footinit.instagram.ui.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -32,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
 
         observeAllEvents()
         setUpListeners()
+        setUpView()
     }
 
     private fun setUpListeners() {
@@ -46,6 +49,37 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun setUpView() {
+        edittext_login_email.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                updateValidationState(R.string.all_empty_string, edittext_login_email)
+            }
+        })
+
+        edittext_login_password.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                updateValidationState(R.string.all_empty_string, edittext_login_password)
+            }
+
+        })
+    }
+
     private fun observeAllEvents() {
         viewmodel.emailValidationEvent.observe(this@LoginActivity,
             Observer {
@@ -55,7 +89,10 @@ class LoginActivity : AppCompatActivity() {
 
         viewmodel.passwordValidationEvent.observe(this@LoginActivity,
             Observer {
-                if (it.status == Status.ERROR) updateValidationState(R.string.all_invalid_password, edittext_login_password)
+                if (it.status == Status.ERROR) updateValidationState(
+                    R.string.all_invalid_password,
+                    edittext_login_password
+                )
                 else updateValidationState(R.string.all_empty_string, edittext_login_password)
             })
 

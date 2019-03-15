@@ -3,6 +3,8 @@ package com.footinit.instagram.ui.signup
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -33,6 +35,8 @@ class SignUpActivity : AppCompatActivity() {
         observeAllEvents()
 
         setUpListeners()
+
+        setUpView()
     }
 
     private fun observeAllEvents() {
@@ -62,6 +66,52 @@ class SignUpActivity : AppCompatActivity() {
 
         viewmodel.navigationEvent.observe(this@SignUpActivity,
             Observer { if (it) showValidationSuccess() })
+    }
+
+    private fun setUpView() {
+        edittext_signup_fullname.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                updateValidationState(R.string.all_empty_string, edittext_signup_fullname)
+            }
+        })
+
+        edittext_signup_email.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                updateValidationState(R.string.all_empty_string, edittext_signup_email)
+            }
+
+        })
+
+        edittext_signup_password.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                updateValidationState(R.string.all_empty_string, edittext_signup_password)
+            }
+
+        })
     }
 
     private fun setUpListeners() {
