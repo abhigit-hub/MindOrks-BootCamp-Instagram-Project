@@ -1,11 +1,11 @@
-package com.footinit.instagram.ui
+package com.footinit.instagram.ui.splash
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.footinit.instagram.R
-import com.footinit.instagram.viewmodel.SplashViewModel
+import com.footinit.instagram.ui.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 

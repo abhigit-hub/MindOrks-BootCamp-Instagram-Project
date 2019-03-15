@@ -1,15 +1,12 @@
-package com.footinit.instagram.viewmodel
+package com.footinit.instagram.ui.splash
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import java.util.*
 
-class SplashViewModel : ViewModel() {
+class SplashViewModel(application: Application) : AndroidViewModel(application) {
 
-    /*
-    * NAVIGATION
-    * These events will be observed from the UI thread
-    * */
     val openSplashActivityEvent: MutableLiveData<Boolean> = MutableLiveData()
 
 
@@ -17,11 +14,6 @@ class SplashViewModel : ViewModel() {
         startActivityWithDelay()
     }
 
-
-    /*
-    * NAVIGATION
-    * Commands to update Events, which are observed from UI thread
-    * */
     private fun onOpenSplashActivityEvent() {
         openSplashActivityEvent.postValue(true)
     }
