@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.footinit.instagram.ui.main.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageview_addphoto_toolbaricon"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/view_addphoto_shadow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/all_instagramlogo" />
+
+        <View
+            android:id="@+id/view_addphoto_shadow"
+            android:layout_width="wrap_content"
+            android:layout_height="4dp"
+            android:layout_marginTop="@dimen/height_toolbar_width"
+            android:background="@drawable/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_home_post"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view_addphoto_shadow"
+            app:onLoadMore="@{viewModel.getLoadMoreListener()}"
+            tools:listitem="@layout/item_post" />
+
+        <ProgressBar
+            android:id="@+id/progressbar_loading"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:indeterminate="true"
+            android:visibility="@{safeUnbox(viewModel.isLoading) ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

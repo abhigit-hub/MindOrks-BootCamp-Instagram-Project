@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.footinit.instagram.ui.main.profile.SharedProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_profile_section_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.25" />
+
+        <ImageView
+            android:id="@+id/imageview_profile_choose_profile_pic"
+            android:layout_width="@dimen/size_imageview_large"
+            android:layout_height="@dimen/size_imageview_large"
+            android:layout_marginStart="@dimen/margin_mini_regular"
+            android:layout_marginTop="@dimen/margin_mini_regular"
+            app:circular="@{true}"
+            app:headers="@{viewModel.getHeaders()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/profile_add_profile_pic"
+            app:url="@{viewModel.profilePicUrl}" />
+
+        <TextView
+            android:id="@+id/textview_profile_postcount"
+            style="@style/TextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginvertical_view_extended"
+            android:layout_marginTop="@dimen/margin_regular"
+            android:text="@string/main_profile_post_count_default"
+            app:layout_constraintStart_toEndOf="@+id/imageview_profile_choose_profile_pic"
+            app:layout_constraintTop_toTopOf="@+id/imageview_profile_choose_profile_pic"
+            app:postCount="@{safeUnbox(viewModel.postCount)}" />
+
+        <TextView
+            android:id="@+id/textview_profile_edit_profile"
+            style="@style/TextStyle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_textview_styled_regular"
+            android:layout_marginStart="@dimen/marginvertical_view_extended"
+            android:layout_marginTop="@dimen/margin_minimum"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:layout_marginBottom="@dimen/margin_regular"
+            android:background="@drawable/all_textview_style"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.navigateToEditProfile()}"
+            android:text="@string/main_editprofile_header"
+            app:layout_constraintBottom_toBottomOf="@+id/imageview_profile_choose_profile_pic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageview_profile_choose_profile_pic"
+            app:layout_constraintTop_toBottomOf="@+id/textview_profile_postcount" />
+
+        <TextView
+            android:id="@+id/textview_profile_username"
+            style="@style/TextStyle.Header.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_mini_regular"
+            android:text="@{viewModel.profileName}"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_profile_choose_profile_pic"
+            tools:text="Abhijit Naik" />
+
+        <TextView
+            android:id="@+id/textView_profile_bio"
+            style="@style/TextStyle.Regular.Normal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_minimum"
+            android:layout_marginEnd="@dimen/margin_regular"
+            app:formatText="@{viewModel.profileTagline}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_profile_username"
+            tools:text="I am passionate Android developer and I aim to reach high and touch the sky" />
+
+        <TextView
+            android:id="@+id/textview_profile_post_header"
+            style="@style/TextStyle.Header.Regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_regular"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_profile_section_start"
+            tools:text="@string/main_my_posts_header" />
+
+        <ImageView
+            android:id="@+id/imageview_profile_no_empty_state"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="@dimen/marginvertical_view_extended"
+            android:layout_marginTop="@dimen/marginvertical_view_extended"
+            android:layout_marginEnd="@dimen/marginvertical_view_extended"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_profile_post_header"
+            app:srcCompat="@drawable/profile_empty_state" />
+
+        <TextView
+            android:id="@+id/textview_profile_no_posts_message"
+            style="@style/TextStyle.Regular.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_mini_regular"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:text="@string/main_no_posts"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_profile_no_empty_state" />
+
+        <TextView
+            android:id="@+id/textview_profile_create_post_message"
+            style="@style/TextStyle.Regular.Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_regular"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:text="@string/main_post_create_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_profile_no_posts_message" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_profile_post"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_regular"
+            android:layout_marginBottom="@dimen/margin_minimum"
+            android:visibility="@{safeUnbox(viewModel.postCount) > 0 ? View.VISIBLE : View.GONE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_profile_post_header" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{safeUnbox(viewModel.getIsLoading()) ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{safeUnbox(viewModel.postCount) > 0 ? View.GONE : View.VISIBLE }"
+            app:constraint_referenced_ids="textview_profile_post_header,textview_profile_no_posts_message,textview_profile_create_post_message,imageview_profile_no_empty_state" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,29 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Text Sizes-->
-    <dimen name="text_regular_size">16sp</dimen>
+    <dimen name="text_regular_small">14sp</dimen>
+    <dimen name="text_regular_normal">16sp</dimen>
     <dimen name="text_regular_large">20sp</dimen>
     <dimen name="text_regular_vlarge">24sp</dimen>
 
     <!--View Height-->
     <dimen name="height_edittext_regular">42dp</dimen>
-    <dimen name="height_button_regular">42dp</dimen>
-    <dimen name="height_divider">0.5dp</dimen>
+    <dimen name="height_button_regular">60dp</dimen>
+    <dimen name="height_textview_styled_regular">24dp</dimen>
+    <dimen name="height_toolbar_width">50dp</dimen>
+    <dimen name="height_stroke">0.5dp</dimen>
 
     <!--Icon Size-->
-    <dimen name="size_imageview_small">16dp</dimen>
+    <dimen name="size_imageview_vsmall">16dp</dimen>
+    <dimen name="size_imageview_small">20dp</dimen>
+    <dimen name="size_imageview_minimal">40dp</dimen>
+    <dimen name="size_imageview_mini_regular">50dp</dimen>
     <dimen name="size_imageview_regular">58dp</dimen>
     <dimen name="size_imageview_large">80dp</dimen>
+    <dimen name="size_imageview_vlarge">120dp</dimen>
+    <dimen name="size_imageview_vvlarge">135dp</dimen>
 
     <!--View Margins-->
     <dimen name="margin_guidelines">30dp</dimen>
+    <dimen name="margin_guideline_percent_top">0.3</dimen>
+    <dimen name="margin_guideline_percent_middle">0.6</dimen>
+    <dimen name="margin_one">1dp</dimen>
     <dimen name="margin_minimum">8dp</dimen>
+    <dimen name="margin_mini_regular">12dp</dimen>
     <dimen name="margin_regular">16dp</dimen>
+    <dimen name="margin_zero">0dp</dimen>
     <dimen name="marginvertical_view_regular">16dp</dimen>
+    <dimen name="marginvertical_view_medium">20dp</dimen>
     <dimen name="marginvertical_view_large">24dp</dimen>
     <dimen name="marginvertical_view_extended">42dp</dimen>
 
     <!--View Padding-->
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_regular">16dp</dimen>
+
+    <!--Bottom Navigation View-->
+    <dimen name="bnv_height">50dp</dimen>
+    <dimen name="bnv_elevation">8dp</dimen>
 </resources>

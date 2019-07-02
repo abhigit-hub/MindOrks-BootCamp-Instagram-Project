@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.footinit.instagram.ui.main.profile.SharedProfileViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelinestart_editprofile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/margin_guidelines" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineend_editprofile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/margin_guidelines" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelinemiddle_edit_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="@dimen/margin_guideline_percent_top" />
+
+            <ImageView
+                android:id="@+id/imageview_editprofile_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_regular"
+                android:layout_marginTop="@dimen/margin_minimum"
+                android:onClick="@{() -> viewModel.navigateToProfile()}"
+                app:layout_constraintBottom_toTopOf="@+id/view_editprofile_shadow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/all_screen_close" />
+
+            <TextView
+                android:id="@+id/textview_editprofile_header"
+                style="@style/TextStyle.Regular.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginvertical_view_medium"
+                android:layout_marginBottom="@dimen/margin_minimum"
+                android:text="@string/main_editprofile_header"
+                app:layout_constraintBottom_toBottomOf="@+id/imageview_editprofile_close"
+                app:layout_constraintStart_toEndOf="@+id/imageview_editprofile_close"
+                app:layout_constraintTop_toTopOf="@+id/imageview_editprofile_close" />
+
+            <ImageView
+                android:id="@+id/imageview_editprofile_complete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_minimum"
+                android:layout_marginEnd="@dimen/margin_regular"
+                android:layout_marginBottom="2dp"
+                android:onClick="@{() -> viewModel.onSaveProfile()}"
+                app:layout_constraintBottom_toTopOf="@+id/view_editprofile_shadow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/edit_profile_tick" />
+
+            <View
+                android:id="@+id/view_editprofile_shadow"
+                android:layout_width="wrap_content"
+                android:layout_height="4dp"
+                android:layout_marginTop="@dimen/size_imageview_mini_regular"
+                android:background="@drawable/shadow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageview_editprofile_choosepic"
+                android:layout_width="@dimen/size_imageview_large"
+                android:layout_height="@dimen/size_imageview_large"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:onClick="@{() -> viewModel.onChangePhotoClicked()}"
+                app:circular="@{true}"
+                app:headers="@{viewModel.getHeaders()}"
+                app:layout_constraintBottom_toTopOf="@+id/textview_editprofile_changephoto_header"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineend_editprofile"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guidelinestart_editprofile"
+                app:layout_constraintTop_toBottomOf="@+id/view_editprofile_shadow"
+                app:srcCompat="@drawable/profile_add_profile_pic"
+                app:url="@{viewModel.profilePicUrl}" />
+
+            <TextView
+                android:id="@+id/textview_editprofile_changephoto_header"
+                style="@style/TextStyle.Header.Sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:onClick="@{() -> viewModel.onChangePhotoClicked()}"
+                android:text="@string/main_editprofile_changephoto"
+                app:layout_constraintBottom_toTopOf="@+id/guidelinemiddle_edit_profile"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineend_editprofile"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guidelinestart_editprofile"
+                app:layout_constraintTop_toBottomOf="@+id/imageview_editprofile_choosepic" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinputlayout_editprofile_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginvertical_view_extended"
+                android:hint="@string/main_editprofile_name"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineend_editprofile"
+                app:layout_constraintStart_toStartOf="@+id/guidelinestart_editprofile"
+                app:layout_constraintTop_toBottomOf="@+id/guidelinemiddle_edit_profile"
+                app:textInputLayoutValidation="@{viewModel.getNameValidation()}">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textinputedittext_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:afterTextChanged="@{viewModel::validateInputs}"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:text="@={viewModel.nameField}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinputlayout_editprofile_bio"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:hint="@string/main_editprofile_bio"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineend_editprofile"
+                app:layout_constraintStart_toStartOf="@+id/guidelinestart_editprofile"
+                app:layout_constraintTop_toBottomOf="@+id/textinputlayout_editprofile_name"
+                app:textInputLayoutValidation="@{viewModel.getBioValidation()}">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textinputedittext_bio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:afterTextChanged="@{viewModel::validateInputs}"
+                    android:inputType="textMultiLine"
+                    android:text="@={viewModel.bioField}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textview_editprofile_privateinformation"
+                style="@style/TextStyle.Regular.Large"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:text="@string/main_editprofile_private_information"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineend_editprofile"
+                app:layout_constraintStart_toStartOf="@+id/guidelinestart_editprofile"
+                app:layout_constraintTop_toBottomOf="@+id/textinputlayout_editprofile_bio" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textinputlayout_editprofile_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_regular"
+                android:hint="@string/main_editprofile_email_address"
+                app:boxStrokeColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineend_editprofile"
+                app:layout_constraintStart_toStartOf="@+id/guidelinestart_editprofile"
+                app:layout_constraintTop_toBottomOf="@+id/textview_editprofile_privateinformation">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textinputedittext_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:text="@{viewModel.emailId}" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{safeUnbox(viewModel.getIsLoading()) ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

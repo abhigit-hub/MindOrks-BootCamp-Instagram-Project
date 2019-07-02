@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.footinit.instagram.ui.main.addphotos.gallery.CameraViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_imageview_vlarge"
+        android:onClick="@{() -> viewModel.onCameraViewClicked()}"
+        android:background="@color/black_shade">
+
+        <ImageView
+            android:id="@+id/imageview_addphoto_camera"
+            android:layout_width="@dimen/size_imageview_minimal"
+            android:layout_height="@dimen/size_imageview_minimal"
+            android:layout_margin="@dimen/margin_one"
+            android:scaleType="centerCrop"
+            android:src="@drawable/main_add_photos_camera"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.36" />
+
+        <TextView
+            android:id="@+id/textview_addphoto_camera"
+            style="@style/TextStyle.Regular.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="@string/main_addphoto_camera"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageview_addphoto_camera"
+            app:layout_constraintStart_toStartOf="@+id/imageview_addphoto_camera"
+            app:layout_constraintTop_toTopOf="@+id/imageview_addphoto_camera" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

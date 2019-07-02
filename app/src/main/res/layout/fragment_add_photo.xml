@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.footinit.instagram.ui.main.addphotos.AddPhotosViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageview_addphoto_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_minimum"
+            android:onClick="@{() -> viewModel.onBackNavigation()}"
+            app:layout_constraintBottom_toTopOf="@+id/view_addphoto_shadow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/all_screen_close" />
+
+        <TextView
+            android:id="@+id/textview_addphoto_header"
+            style="@style/TextStyle.Regular.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginvertical_view_medium"
+            android:layout_marginBottom="@dimen/margin_minimum"
+            android:text="@string/main_addphoto_gallery_header"
+            app:layout_constraintBottom_toBottomOf="@+id/imageview_addphoto_close"
+            app:layout_constraintStart_toEndOf="@+id/imageview_addphoto_close"
+            app:layout_constraintTop_toTopOf="@+id/imageview_addphoto_close" />
+
+        <View
+            android:id="@+id/view_addphoto_shadow"
+            android:layout_width="wrap_content"
+            android:layout_height="4dp"
+            android:layout_marginTop="@dimen/size_imageview_mini_regular"
+            android:background="@drawable/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_addphoto_gallery"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_minimum"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view_addphoto_shadow"
+            app:layout_constraintVertical_bias="1.0"
+            app:onLoadMore="@{viewModel.getLoadMoreListener()}"
+            app:spanCount="3"
+            tools:itemCount="30"
+            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/item_gallery" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{safeUnbox(viewModel.getIsLoading()) ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

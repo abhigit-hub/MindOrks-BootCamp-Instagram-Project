@@ -1,155 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.splash.SplashActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelinetop_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+    <data>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelinestart_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/margin_guidelines" />
+        <import type="android.view.View" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineend_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/margin_guidelines" />
+        <variable
+            name="viewModel"
+            type="com.footinit.instagram.ui.login.LoginViewModel" />
+    </data>
 
-    <ImageView
-        android:id="@+id/imageview_login_logo"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/size_imageview_regular"
-        android:layout_marginTop="@dimen/margin_minimum"
-        android:contentDescription="@string/all_application_name"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineend_login"
-        app:layout_constraintStart_toStartOf="@+id/guidelinestart_login"
-        app:layout_constraintTop_toTopOf="@+id/guidelinetop_login"
-        app:srcCompat="@drawable/all_instagramlogo" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.splash.SplashActivity">
 
-    <EditText
-        android:id="@+id/edittext_login_email"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/height_edittext_regular"
-        android:layout_marginTop="@dimen/marginvertical_view_extended"
-        android:background="@drawable/style_edittext_normal"
-        android:ems="10"
-        android:hint="@string/all_enteremail"
-        android:inputType="textEmailAddress"
-        android:paddingStart="@dimen/padding_regular"
-        android:paddingEnd="@dimen/padding_regular"
-        android:textColor="@color/black"
-        android:textColorHint="@color/dgray"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineend_login"
-        app:layout_constraintStart_toStartOf="@+id/guidelinestart_login"
-        app:layout_constraintTop_toBottomOf="@+id/imageview_login_logo" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelinetop_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
 
-    <EditText
-        android:id="@+id/edittext_login_password"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/height_edittext_regular"
-        android:layout_marginTop="@dimen/marginvertical_view_regular"
-        android:background="@drawable/style_edittext_normal"
-        android:ems="10"
-        android:hint="@string/login_enterpassword"
-        android:inputType="textPassword"
-        android:paddingStart="@dimen/padding_regular"
-        android:paddingEnd="@dimen/padding_regular"
-        android:textColor="@color/black"
-        android:textColorHint="@color/dgray"
-        app:layout_constraintEnd_toStartOf="@id/guidelineend_login"
-        app:layout_constraintStart_toStartOf="@id/guidelinestart_login"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_login_email" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelinestart_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/margin_guidelines" />
 
-    <Button
-        android:id="@+id/button_login"
-        style="@style/Button"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/height_button_regular"
-        android:layout_marginTop="@dimen/marginvertical_view_regular"
-        android:text="@string/all_login"
-        android:textAllCaps="true"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineend_login"
-        app:layout_constraintStart_toStartOf="@+id/guidelinestart_login"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_login_password" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineend_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/margin_guidelines" />
 
-    <View
-        android:id="@+id/divider1"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/height_divider"
-        android:layout_marginEnd="@dimen/margin_minimum"
-        android:background="@color/gray"
-        app:layout_constraintBottom_toBottomOf="@+id/textview_login_divider"
-        app:layout_constraintEnd_toStartOf="@+id/textview_login_divider"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/guidelinestart_login"
-        app:layout_constraintTop_toTopOf="@+id/textview_login_divider" />
+        <ImageView
+            android:id="@+id/imageview_login_logo"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_imageview_regular"
+            android:layout_marginTop="@dimen/margin_minimum"
+            android:contentDescription="@string/all_application_name"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineend_login"
+            app:layout_constraintStart_toStartOf="@+id/guidelinestart_login"
+            app:layout_constraintTop_toTopOf="@+id/guidelinetop_login"
+            app:srcCompat="@drawable/all_instagramlogo" />
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/height_divider"
-        android:layout_marginStart="@dimen/margin_minimum"
-        android:background="@color/gray"
-        app:layout_constraintBottom_toBottomOf="@+id/textview_login_divider"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineend_login"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textview_login_divider"
-        app:layout_constraintTop_toTopOf="@+id/textview_login_divider" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textinputlayout_login_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginvertical_view_extended"
+            android:hint="@string/all_enteremail"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineend_login"
+            app:layout_constraintStart_toStartOf="@+id/guidelinestart_login"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_login_logo"
+            app:textInputLayoutValidation="@{viewModel.emailValidation}">
 
-    <TextView
-        android:id="@+id/textview_login_divider"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/marginvertical_view_extended"
-        android:text="@string/all_divider_text"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/text_regular_large"
-        app:layout_constraintEnd_toStartOf="@+id/divider2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/divider1"
-        app:layout_constraintTop_toBottomOf="@+id/button_login" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:afterTextChanged="@{viewModel::validateInputs}"
+                android:inputType="textEmailAddress"
+                android:lines="1"
+                android:maxLength="250"
+                android:text="@={viewModel.emailField}" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textview_logintosignup"
-        style="@style/TextStyle.SubHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginvertical_view_extended"
-        android:text="@string/login_signupemail"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineend_login"
-        app:layout_constraintStart_toEndOf="@+id/guidelinestart_login"
-        app:layout_constraintTop_toBottomOf="@+id/textview_login_divider" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textinputlayout_login_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginvertical_view_regular"
+            android:hint="@string/login_enterpassword"
+            app:boxStrokeColor="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toStartOf="@id/guidelineend_login"
+            app:layout_constraintStart_toStartOf="@id/guidelinestart_login"
+            app:layout_constraintTop_toBottomOf="@+id/textinputlayout_login_email"
+            app:textInputLayoutValidation="@{viewModel.passwordValidation}">
 
-    <ImageView
-        android:id="@+id/imageView_login_clearemail"
-        android:layout_width="@dimen/size_imageview_small"
-        android:layout_height="@dimen/size_imageview_small"
-        android:layout_marginEnd="@dimen/margin_regular"
-        app:layout_constraintBottom_toBottomOf="@+id/edittext_login_email"
-        app:layout_constraintEnd_toEndOf="@+id/edittext_login_email"
-        app:layout_constraintTop_toTopOf="@+id/edittext_login_email"
-        app:srcCompat="@drawable/all_cancel" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textinputedittext_login_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:afterTextChanged="@{viewModel::validateInputs}"
+                android:inputType="textEmailAddress"
+                android:lines="1"
+                android:maxLength="250"
+                android:text="@={viewModel.passwordField}" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:id="@+id/imageView_login_clearpassword"
-        android:layout_width="@dimen/size_imageview_small"
-        android:layout_height="@dimen/size_imageview_small"
-        android:layout_marginEnd="@dimen/margin_regular"
-        app:layout_constraintBottom_toBottomOf="@+id/edittext_login_password"
-        app:layout_constraintEnd_toEndOf="@+id/edittext_login_password"
-        app:layout_constraintTop_toTopOf="@+id/edittext_login_password"
-        app:srcCompat="@drawable/all_cancel" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_login"
+            style="@style/Button"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_button_regular"
+            android:layout_marginTop="@dimen/marginvertical_view_regular"
+            android:onClick="@{() -> viewModel.onLogin()}"
+            android:text="@string/all_login"
+            android:textAllCaps="true"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineend_login"
+            app:layout_constraintStart_toStartOf="@+id/guidelinestart_login"
+            app:layout_constraintTop_toBottomOf="@+id/textinputlayout_login_password" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_stroke"
+            android:layout_marginEnd="@dimen/margin_minimum"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_login_divider"
+            app:layout_constraintEnd_toStartOf="@+id/textview_login_divider"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/guidelinestart_login"
+            app:layout_constraintTop_toTopOf="@+id/textview_login_divider" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/height_stroke"
+            android:layout_marginStart="@dimen/margin_minimum"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_login_divider"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineend_login"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textview_login_divider"
+            app:layout_constraintTop_toTopOf="@+id/textview_login_divider" />
+
+        <TextView
+            android:id="@+id/textview_login_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/marginvertical_view_extended"
+            android:text="@string/all_divider_text"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_regular_large"
+            app:layout_constraintEnd_toStartOf="@+id/divider2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/divider1"
+            app:layout_constraintTop_toBottomOf="@+id/button_login" />
+
+        <TextView
+            android:id="@+id/textview_logintosignup"
+            style="@style/TextStyle.Header.Sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginvertical_view_extended"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{() -> viewModel.navigateToSignUp()}"
+            android:text="@string/login_signupemail"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineend_login"
+            app:layout_constraintStart_toEndOf="@+id/guidelinestart_login"
+            app:layout_constraintTop_toBottomOf="@+id/textview_login_divider" />
+
+        <ImageView
+            android:id="@+id/imageView_login_clearemail"
+            android:layout_width="@dimen/size_imageview_vsmall"
+            android:layout_height="@dimen/size_imageview_vsmall"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:onClick="@{() -> viewModel.clearEmail()}"
+            app:layout_constraintBottom_toBottomOf="@+id/textinputlayout_login_email"
+            app:layout_constraintEnd_toEndOf="@+id/textinputlayout_login_email"
+            app:layout_constraintTop_toTopOf="@+id/textinputlayout_login_email"
+            app:srcCompat="@drawable/all_cancel" />
+
+        <ImageView
+            android:id="@+id/imageView_login_clearpassword"
+            android:layout_width="@dimen/size_imageview_vsmall"
+            android:layout_height="@dimen/size_imageview_vsmall"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:onClick="@{() -> viewModel.clearPassword()}"
+            app:layout_constraintBottom_toBottomOf="@+id/textinputlayout_login_password"
+            app:layout_constraintEnd_toEndOf="@+id/textinputlayout_login_password"
+            app:layout_constraintTop_toTopOf="@+id/textinputlayout_login_password"
+            app:srcCompat="@drawable/all_cancel" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{safeUnbox(viewModel.loggingIn) ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

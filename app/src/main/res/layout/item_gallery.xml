@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.footinit.instagram.ui.main.addphotos.gallery.GalleryViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewModel.onImageSelected()}">
+
+        <ImageView
+            android:id="@+id/imageview_postupload_pic"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_imageview_vlarge"
+            android:layout_margin="@dimen/margin_one"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:loadFromDisk="@{viewModel.imagePath}"
+            app:srcCompat="@drawable/all_placeholder_generic" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

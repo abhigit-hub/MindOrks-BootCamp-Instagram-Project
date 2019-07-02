@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.footinit.instagram.ui.main.likedetail.likes.LikeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageview_profile_pic"
+            android:layout_width="@dimen/size_imageview_mini_regular"
+            android:layout_height="@dimen/size_imageview_mini_regular"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_minimum"
+            android:layout_marginBottom="@dimen/margin_minimum"
+            app:circular="@{true}"
+            app:headers="@{viewModel.headers}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/all_placeholder_profile"
+            app:url="@{viewModel.profilePicUrl}" />
+
+        <TextView
+            android:id="@+id/textview_profile_accountid"
+            style="@style/TextStyle.Regular.Normal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:text="@{viewModel.userName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageview_profile_pic"
+            app:layout_constraintTop_toTopOf="@+id/imageview_profile_pic"
+            tools:text="awesome_earthpix" />
+
+        <TextView
+            android:id="@+id/textview_profile_name"
+            style="@style/TextStyle.Regular.Normal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:text="@{viewModel.userId}"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@+id/imageview_profile_pic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageview_profile_pic"
+            app:layout_constraintTop_toBottomOf="@+id/textview_profile_accountid"
+            tools:text="Awesome Earthpix" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

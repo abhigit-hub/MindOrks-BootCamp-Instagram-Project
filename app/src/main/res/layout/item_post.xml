@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.footinit.instagram.ui.main.home.posts.PostViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_mini_regular"
+        android:layout_marginBottom="@dimen/margin_mini_regular">
+
+        <ImageView
+            android:id="@+id/imageview_post_profile_pic"
+            android:layout_width="@dimen/size_imageview_minimal"
+            android:layout_height="@dimen/size_imageview_minimal"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_minimum"
+            app:circular="@{true}"
+            app:headers="@{viewModel.headers}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/all_placeholder_profile"
+            app:url="@{viewModel.profilePicUrl}" />
+
+        <TextView
+            android:id="@+id/textview_post_profile_name"
+            style="@style/TextStyle.Regular.Normal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:gravity="start|center"
+            android:text="@{viewModel.userName}"
+            app:layout_constraintBottom_toBottomOf="@+id/imageview_post_profile_pic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageview_post_profile_pic"
+            app:layout_constraintTop_toTopOf="@+id/imageview_post_profile_pic"
+            tools:text="Abhijit Naik" />
+
+        <ImageView
+            android:id="@+id/imageview_post_pic"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="@dimen/margin_regular"
+            android:scaleType="center"
+            app:headers="@{viewModel.headers}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_post_profile_pic"
+            app:placeholderHeight="@{viewModel.placeholderHeight}"
+            app:placeholderWidth="@{viewModel.placeholderWidth}"
+            app:srcCompat="@drawable/all_placeholder_generic"
+            app:url="@{viewModel.postUrl}" />
+
+        <ImageView
+            android:id="@+id/imageview_post_like_pic"
+            android:layout_width="@dimen/size_imageview_small"
+            android:layout_height="@dimen/size_imageview_small"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_minimum"
+            android:layout_marginBottom="@dimen/margin_minimum"
+            android:onClick="@{() -> viewModel.onPostLikeToggled()}"
+            android:src="@{safeUnbox(viewModel.isLiked) ? @drawable/all_heart_selected : @drawable/all_heart_unselected}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_post_pic"
+            tools:src="@drawable/all_heart_selected" />
+
+        <TextView
+            android:id="@+id/textview_post_like_count"
+            style="@style/TextStyle.Regular.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini_regular"
+            android:gravity="start|center"
+            android:onClick="@{() -> viewModel.onLikeCountClicked()}"
+            app:layout_constraintBottom_toBottomOf="@+id/imageview_post_like_pic"
+            app:layout_constraintStart_toEndOf="@+id/imageview_post_like_pic"
+            app:layout_constraintTop_toTopOf="@+id/imageview_post_like_pic"
+            app:likeCount="@{safeUnbox(viewModel.likeCount)}"
+            tools:text="123 likes" />
+
+        <TextView
+            android:id="@+id/textview_post_time"
+            style="@style/TextStyle.Regular.Small"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_mini_regular"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:gravity="end"
+            android:text="@{viewModel.timeElapsedSincePost}"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@+id/imageview_post_like_pic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageview_post_like_pic"
+            tools:text="yesterday" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

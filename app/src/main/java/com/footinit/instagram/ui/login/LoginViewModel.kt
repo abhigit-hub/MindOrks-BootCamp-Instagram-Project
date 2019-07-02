@@ -1,45 +1,36 @@
 package com.footinit.instagram.ui.login
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.os.Bundle
+import android.text.Editable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import com.footinit.instagram.commons.Resource
-import com.footinit.instagram.commons.Status
-import com.footinit.instagram.utils.Validation
-import com.footinit.instagram.utils.Validator
+import com.footinit.instagram.ui.base.BaseViewModel
+import com.footinit.instagram.utils.common.Event
+import com.footinit.instagram.utils.common.Resource
 
-class LoginViewModel(application: Application) : AndroidViewModel(application) {
+interface LoginViewModel : BaseViewModel {
 
-    private val loginValidationEvent: MutableLiveData<List<Validation>> by lazy {
-        MutableLiveData<List<Validation>>()
-    }
+    fun getDummyNavigation(): LiveData<Event<Bundle>>
 
-    val emailValidationEvent: LiveData<Resource<Any>> by lazy {
-        transformLoginValidationEvent(Validation.Field.EMAIL)
-    }
+    fun getSignUpNavigation(): LiveData<Event<Bundle>>
 
-    val passwordValidationEvent: LiveData<Resource<Any>> by lazy {
-        transformLoginValidationEvent(Validation.Field.PASSWORD)
-    }
+    fun getEmailField(): MutableLiveData<String>
 
-    val navigationEvent: LiveData<Boolean> by lazy {
-        Transformations.map(loginValidationEvent) {
-            it.isNotEmpty() && it.filter {
-                it.resource.status == Status.SUCCESS
-            }.size == it.size
-        }
-    }
+    fun getPasswordField(): MutableLiveData<String>
 
-    private fun transformLoginValidationEvent(field: Validation.Field) =
-        Transformations.map(loginValidationEvent) {
-            it.find { validation -> validation.field == field }
-                ?.run { return@run this.resource }
-                ?: Resource(Status.UNKNOWN)
-        }
+    fun getLoggingIn(): LiveData<Boolean>
 
-    fun onLoginClicked(email: String, password: String) {
-        loginValidationEvent.value = Validator.validateLoginFields(email, password)
-    }
+    fun getEmailValidation(): LiveData<Resource<Int>>
+
+    fun getPasswordValidation(): LiveData<Resource<Int>>
+
+    fun onLogin()
+
+    fun clearEmail()
+
+    fun clearPassword()
+
+    fun navigateToSignUp()
+
+    fun validateInputs(s: Editable)
 }

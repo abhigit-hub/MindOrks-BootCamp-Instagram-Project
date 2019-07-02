@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageview_filter_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:layout_marginTop="@dimen/margin_minimum"
+        app:layout_constraintBottom_toTopOf="@+id/view_filter_shadow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/all_back_action" />
+
+    <TextView
+        android:id="@+id/textview_filter_header"
+        style="@style/TextStyle.Regular.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginvertical_view_medium"
+        android:text="@string/main_addphoto_filter_header"
+        app:layout_constraintBottom_toBottomOf="@+id/imageview_filter_back"
+        app:layout_constraintStart_toEndOf="@+id/imageview_filter_back"
+        app:layout_constraintTop_toTopOf="@+id/imageview_filter_back" />
+
+    <TextView
+        android:id="@+id/textview_filter_share"
+        style="@style/TextStyle.Header.Sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_minimum"
+        android:layout_marginEnd="@dimen/margin_regular"
+        android:text="@string/main_addphoto_filter_share"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/view_filter_shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/edit_profile_tick" />
+
+    <View
+        android:id="@+id/view_filter_shadow"
+        android:layout_width="wrap_content"
+        android:layout_height="4dp"
+        android:layout_marginTop="@dimen/size_imageview_mini_regular"
+        android:background="@drawable/shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageview_filter_raw_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_filter_shadow"
+        app:srcCompat="@drawable/all_placeholder_generic" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_regular"
+        android:layout_marginTop="@dimen/marginvertical_view_extended"
+        android:layout_marginEnd="@dimen/margin_regular"
+        android:layout_marginBottom="@dimen/marginvertical_view_extended"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_filter_raw_pic"
+        app:spanCount="3"
+        tools:listitem="@layout/item_gallery" />
+</androidx.constraintlayout.widget.ConstraintLayout>

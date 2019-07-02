@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.footinit.instagram.ui.main.home.posts.EmptyViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageview_emptypost_emptystate"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_imageview_large"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_regular"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:layout_marginBottom="@dimen/margin_regular"
+            android:contentDescription="@string/main_no_posts"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/main_home_empty_state" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_regular"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:text="@string/main_no_posts"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_emptypost_emptystate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

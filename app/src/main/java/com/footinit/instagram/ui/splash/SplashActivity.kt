@@ -1,32 +1,30 @@
 package com.footinit.instagram.ui.splash
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.footinit.instagram.R
+import com.footinit.instagram.databinding.ActivitySplashBinding
+import com.footinit.instagram.ui.base.BaseActivity
 import com.footinit.instagram.ui.login.LoginActivity
+import com.footinit.instagram.ui.main.MainActivity
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>() {
 
-    lateinit var viewModel: SplashViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-
-        viewModel = ViewModelProviders.of(this@SplashActivity).get(SplashViewModel::class.java)
-
-        observeOpenSplashActivity()
+    companion object {
+        const val TAG = "SplashActivity"
     }
 
-    private fun observeOpenSplashActivity() {
-        viewModel.openSplashActivityEvent.observe(this@SplashActivity,
-            Observer { status -> if (status) openSplashActivity() })
-    }
+    override fun getLayoutId(): Int = R.layout.activity_splash
 
-    private fun openSplashActivity() {
-        startActivity(LoginActivity.getStartIntent(this@SplashActivity))
-        finish()
+    override fun setupView(savedInstanceState: Bundle?) {
+        binding.viewModel = viewModel
+
+        viewModel.getMainNavigation().observe(this, Observer {
+            it.getIfNotHandled()?.run { startActivity(MainActivity::class, this) }
+        })
+
+        viewModel.getLoginNavigation().observe(this, Observer {
+            it.getIfNotHandled()?.run { startActivity(LoginActivity::class, this) }
+        })
     }
 }

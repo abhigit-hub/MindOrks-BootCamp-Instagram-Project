@@ -1,49 +1,40 @@
 package com.footinit.instagram.ui.signup
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.os.Bundle
+import android.text.Editable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import com.footinit.instagram.commons.Resource
-import com.footinit.instagram.commons.Status
-import com.footinit.instagram.utils.Validation
-import com.footinit.instagram.utils.Validator
+import com.footinit.instagram.ui.base.BaseViewModel
+import com.footinit.instagram.utils.common.Event
+import com.footinit.instagram.utils.common.Resource
 
-class SignUpViewModel(application: Application) : AndroidViewModel(application) {
+interface SignUpViewModel : BaseViewModel {
 
-    private val signUpValidationEvent: MutableLiveData<List<Validation>> by lazy {
-        MutableLiveData<List<Validation>>()
-    }
+    fun getLoginNavigation(): LiveData<Event<Bundle>>
 
-    val fullNameValidationEvent: LiveData<Resource<Any>> by lazy {
-        transformSignUpValidationEvent(Validation.Field.FULLNAME)
-    }
+    fun getFullNameField(): MutableLiveData<String>
 
-    val emailValidationEvent: LiveData<Resource<Any>> by lazy {
-        transformSignUpValidationEvent(Validation.Field.EMAIL)
-    }
+    fun getEmailField(): MutableLiveData<String>
 
-    val passwordValidationEvent: LiveData<Resource<Any>> by lazy {
-        transformSignUpValidationEvent(Validation.Field.PASSWORD)
-    }
+    fun getPasswordField(): MutableLiveData<String>
 
-    val navigationEvent: LiveData<Boolean> by lazy {
-        Transformations.map(signUpValidationEvent) {
-            it.isNotEmpty() && it.filter {
-                it.resource.status == Status.SUCCESS
-            }.size == it.size
-        }
-    }
+    fun getSigningIn(): LiveData<Boolean>
 
-    private fun transformSignUpValidationEvent(field: Validation.Field) =
-        Transformations.map(signUpValidationEvent) {
-            it.find { it.field == field }
-                ?.run { return@run this.resource }
-                ?: Resource(Status.UNKNOWN)
-        }
+    fun getFullNameValidation(): LiveData<Resource<Int>>
 
-    fun onSignUpClicked(fullName: String, email: String, password: String) {
-        signUpValidationEvent.value = Validator.validateSignUpFields(fullName, email, password)
-    }
+    fun getEmailValidation(): LiveData<Resource<Int>>
+
+    fun getPasswordValidation(): LiveData<Resource<Int>>
+
+    fun onSignUp()
+
+    fun clearFullName()
+
+    fun clearEmail()
+
+    fun clearPassword()
+
+    fun navigateToLogin()
+
+    fun validateInputs(s: Editable)
 }

@@ -1,28 +1,13 @@
 package com.footinit.instagram.ui.splash
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import java.util.*
+import android.os.Bundle
+import androidx.lifecycle.LiveData
+import com.footinit.instagram.ui.base.BaseViewModel
+import com.footinit.instagram.utils.common.Event
 
-class SplashViewModel(application: Application) : AndroidViewModel(application) {
+interface SplashViewModel : BaseViewModel {
 
-    val openSplashActivityEvent: MutableLiveData<Boolean> = MutableLiveData()
+    fun getMainNavigation(): LiveData<Event<Bundle>>
 
-
-    init {
-        startActivityWithDelay()
-    }
-
-    private fun onOpenSplashActivityEvent() {
-        openSplashActivityEvent.postValue(true)
-    }
-
-    private fun startActivityWithDelay() {
-        Timer().schedule(object : TimerTask() {
-            override fun run() {
-                onOpenSplashActivityEvent()
-            }
-        }, 2000)
-    }
+    fun getLoginNavigation(): LiveData<Event<Bundle>>
 }

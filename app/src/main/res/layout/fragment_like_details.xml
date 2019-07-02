@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.footinit.instagram.ui.main.likedetail.LikeDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageview_likedetails_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_regular"
+            android:layout_marginTop="@dimen/margin_minimum"
+            android:onClick="@{() -> viewModel.onBackNavigation()}"
+            app:layout_constraintBottom_toTopOf="@+id/view_filter_shadow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/all_screen_close" />
+
+        <TextView
+            android:id="@+id/textview_likedetails_header"
+            style="@style/TextStyle.Regular.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginvertical_view_medium"
+            android:layout_marginBottom="@dimen/margin_minimum"
+            android:text="@string/main_addphoto_likedetails_likedby"
+            app:layout_constraintBottom_toBottomOf="@+id/imageview_likedetails_close"
+            app:layout_constraintStart_toEndOf="@+id/imageview_likedetails_close"
+            app:layout_constraintTop_toTopOf="@+id/imageview_likedetails_close" />
+
+        <TextView
+            android:id="@+id/textview_filter_share"
+            style="@style/TextStyle.Regular.Normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_minimum"
+            android:layout_marginEnd="@dimen/margin_regular"
+            android:textColor="@color/gray"
+            app:layout_constraintBottom_toTopOf="@+id/view_filter_shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:likeCount="@{viewModel.userLikeCount}"
+            app:srcCompat="@drawable/edit_profile_tick"
+            tools:text="20 likes" />
+
+        <View
+            android:id="@+id/view_filter_shadow"
+            android:layout_width="wrap_content"
+            android:layout_height="4dp"
+            android:layout_marginTop="@dimen/size_imageview_mini_regular"
+            android:background="@drawable/shadow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_likedetails"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_filter_shadow"
+            tools:listitem="@layout/item_like" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
