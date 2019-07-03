@@ -11,6 +11,7 @@ import com.footinit.instagram.utils.rx.SchedulerProvider
 import io.reactivex.BackpressureStrategy
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.processors.PublishProcessor
+import java.util.concurrent.atomic.AtomicBoolean
 
 class HomeViewModelImpl(
     schedulerProvider: SchedulerProvider,
@@ -21,7 +22,9 @@ class HomeViewModelImpl(
 
     private val paginator = PublishProcessor.create<Pair<String?, String?>>()
 
+    private var isLoadingAtomic = AtomicBoolean(false)
     private val isLoading: MutableLiveData<Boolean> = MutableLiveData()
+
     private val posts: LiveData<List<PostWithUser>> = postRepository.getAllPosts()
     private var firstPostId: String? = null
     private var lastPostId: String? = null
@@ -30,20 +33,23 @@ class HomeViewModelImpl(
     override fun getAllPosts(): LiveData<List<PostWithUser>> = posts
     override fun getLoadMoreListener() = object : LoadMoreListener {
         override fun onLoadMore() {
-            if (isLoading.value !== null && isLoading.value == false) loadMorePosts()
+            if (!isLoadingAtomic.getAndSet(true)) loadMorePosts()
         }
+    }
+
+    companion object {
+        const val TAG = "HomeViewModelImpl"
     }
 
     init {
         compositeDisposable.addAll(
             paginator
                 .onBackpressureDrop()
-                .doOnNext { isLoading.postValue(true) }
                 .concatMap {
                     postRepository.doFetchAndSaveAllPosts(it.first, it.second)
                         .toFlowable(BackpressureStrategy.LATEST)
                         .subscribeOn(schedulerProvider.io())
-                        .doOnError { handleNetworkError(it) }
+                        .doOnError { t -> handleNetworkError(t) }
                 }
                 .subscribe(
                     { pair ->
@@ -52,10 +58,12 @@ class HomeViewModelImpl(
                         }
                         pair?.second.let { second -> if (!second.isNullOrBlank()) lastPostId = second }
                         isLoading.postValue(false)
+                        isLoadingAtomic.set(false)
                     },
                     {
                         handleNetworkError(it)
                         isLoading.postValue(false)
+                        isLoadingAtomic.set(false)
                     }
                 )
         )
@@ -65,5 +73,8 @@ class HomeViewModelImpl(
         if (checkInternetConnectionWithMessage()) paginator.onNext(Pair(firstPostId, lastPostId))
     }
 
-    override fun onViewCreated() = loadMorePosts()
+    override fun onViewCreated() {
+        isLoadingAtomic.set(true)
+        loadMorePosts()
+    }
 }

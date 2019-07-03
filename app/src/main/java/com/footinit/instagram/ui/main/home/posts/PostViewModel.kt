@@ -114,11 +114,14 @@ class PostViewModel @Inject constructor(
     }
 
     private fun showUnliked() {
+        var removeUser: UserEntity? = null
         currentPost?.likedBy?.map { user ->
             if (user.id == currentUserSession?.id) {
-                currentPost?.likedBy?.remove(user)
+                removeUser = user
             }
         }
+
+        currentPost?.likedBy?.remove(removeUser?.let { it })
         isLiked.set(getIsLiked())
         likeCount.set(getLikeCount())
     }

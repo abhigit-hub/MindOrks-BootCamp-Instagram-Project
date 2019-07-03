@@ -3,8 +3,6 @@ package com.footinit.instagram.ui.base
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.footinit.instagram.InstagramApplication
 import com.footinit.instagram.R
 import com.footinit.instagram.di.injector.ApplicationInjector
 import com.footinit.instagram.utils.common.Resource
